@@ -7,7 +7,7 @@ import { setIsRestore } from "@/components/store/storeAction";
 
 import { FaTrashRestore } from "react-icons/fa";
 import SpinnerButton from "../spinners/SpinnerButton";
-import { StoreContext } from "../../store/storeContext";
+import { StoreContext } from "@/components/store/storeContext";
 
 const ModalRestore = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);

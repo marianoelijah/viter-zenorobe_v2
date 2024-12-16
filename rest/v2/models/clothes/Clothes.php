@@ -4,8 +4,9 @@ class Clothes
 {
     public $clothes_aid;
     public $clothes_is_active;
-    public $clothes_image;
     public $clothes_title;
+    public $clothes_image1;
+    public $clothes_image2;
     public $clothes_price;
     public $clothes_category_id;
     public $clothes_datetime;
@@ -18,23 +19,28 @@ class Clothes
     public $category_created;
 
 
+
     public $connection;
     public $lastInsertedId;
     public $clothes_start;
     public $clothes_total;
-    public $category_start;
-    public $category_total;
 
 
     public $tblCategory;
     public $tblClothes;
 
+    public $Clothes_start;
+    public $Clothes_total;
+    public $Clothes_search;
+    public $Category_total;
+    public $Category_search;
+
 
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblCategory = "jollibee_category";
-        $this->tblClothes = "jollibee_clothes";
+        $this->tblCategory = "zenorobe_category";
+        $this->tblClothes = "zenorobe_clothes";
        
     }
 
@@ -44,11 +50,11 @@ class Clothes
         try {
           $sql = "select * ";
           $sql .= "from ";
-          $sql .= "{$this->tblCategory} as readCategory, ";
-          $sql .= "{$this->tblClothes} as readClothes ";
-          $sql .= "where readCategory.category_aid = readClothes.clothes_category_id ";
-          $sql .= "order by readClothes.clothes_is_active desc, ";
-          $sql .= "readClothes.clothes_aid asc ";
+          $sql .= "{$this->tblCategory} as Category, ";
+          $sql .= "{$this->tblClothes} as Clothes ";
+          $sql .= "where Category.category_aid = Clothes.clothes_category_id ";
+          $sql .= "order by Clothes.clothes_is_active desc, ";
+          $sql .= "Clothes.clothes_aid asc ";
           $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
           $query = false;
@@ -62,11 +68,11 @@ class Clothes
         try {
           $sql = "select * ";
           $sql .= "from ";
-          $sql .= "{$this->tblCategory} as readCategory, ";
-          $sql .= "{$this->tblClothes} as readClothes ";
-          $sql .= "where readCategory.category_aid = readClothes.clothes_category_id ";
-          $sql .= "order by readClothes.clothes_is_active desc, ";
-          $sql .= "readClothes.clothes_aid asc ";
+          $sql .= "{$this->tblCategory} as Category, ";
+          $sql .= "{$this->tblClothes} as Clothes ";
+          $sql .= "where Category.category_aid = Clothes.clothes_category_id ";
+          $sql .= "order by Clothes.clothes_is_active desc, ";
+          $sql .= "Clothes.clothes_aid asc ";
           $sql .= "limit :start, ";
           $sql .= ":total ";
           $query = $this->connection->prepare($sql);
@@ -95,20 +101,22 @@ class Clothes
       }
 
 
-    public function create()
+      public function create()
   {
     try {
       $sql = "insert into {$this->tblClothes} ";
       $sql .= "(clothes_is_active, ";
-      $sql .= "clothes_image, ";
       $sql .= "clothes_title, ";
+      $sql .= "clothes_image1, ";
+      $sql .= "clothes_image2, ";
       $sql .= "clothes_price, ";
       $sql .= "clothes_category_id, ";
       $sql .= "clothes_created, ";
       $sql .= "clothes_datetime ) values ( ";
       $sql .= ":clothes_is_active, ";
-      $sql .= ":clothes_image, ";
       $sql .= ":clothes_title, ";
+      $sql .= ":clothes_image1, ";
+      $sql .= ":clothes_image2, ";
       $sql .= ":clothes_price, ";
       $sql .= ":clothes_category_id, ";
       $sql .= ":clothes_created, ";
@@ -116,8 +124,9 @@ class Clothes
       $query = $this->connection->prepare($sql);
       $query->execute([
         "clothes_is_active" => $this->clothes_is_active,
-        "clothes_image" => $this->clothes_image,
         "clothes_title" => $this->clothes_title,
+        "clothes_image1" => $this->clothes_image1,
+        "clothes_image2" => $this->clothes_image2,
         "clothes_price" => $this->clothes_price,
         "clothes_category_id" => $this->clothes_category_id,
         "clothes_datetime" => $this->clothes_datetime,
@@ -153,18 +162,12 @@ class Clothes
   {
     try {
       $sql = "update {$this->tblClothes} set ";
-      $sql .= "clothes_image = :clothes_image, ";
       $sql .= "clothes_title = :clothes_title, ";
-      $sql .= "clothes_price = :clothes_price, ";
-      $sql .= "clothes_category_id = :clothes_category_id, ";
       $sql .= "clothes_datetime = :clothes_datetime ";
       $sql .= "where clothes_aid  = :clothes_aid ";
       $query = $this->connection->prepare($sql);
       $query->execute([
-        "clothes_image" => $this->clothes_image,
         "clothes_title" => $this->clothes_title,
-        "clothes_price" => $this->clothes_price,
-        "clothes_category_id" => $this->clothes_category_id,
         "clothes_datetime" => $this->clothes_datetime,
         "clothes_aid" => $this->clothes_aid
       ]);

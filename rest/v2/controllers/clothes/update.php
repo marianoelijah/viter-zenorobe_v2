@@ -12,8 +12,9 @@ if (array_key_exists("clothesid", $_GET)) {
   checkPayload($data);
   // get data
   $clothes->clothes_aid = $_GET['clothesid'];
-  $clothes->clothes_image = checkIndex($data, "clothes_image");
   $clothes->clothes_title = checkIndex($data, "clothes_title");
+  $clothes->clothes_image1 = checkIndex($data, "clothes_image1");
+  $clothes->clothes_image2 = checkIndex($data, "clothes_image2");
   $clothes->clothes_price = checkIndex($data, "clothes_price");
   $clothes->clothes_category_id = checkIndex($data, "clothes_category_id");
   $clothes->clothes_created = date("Y-m-d H:i:s");

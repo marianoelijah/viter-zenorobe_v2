@@ -1,7 +1,7 @@
 
 import { CheckCircle } from "lucide-react";
 import React from "react";
-import { StoreContext } from "../store/storeContext";
+import { StoreContext } from "../../../store/storeContext";
 
 const ToastSuccess = () => {
   const { store, dispatch } = React.useContext(StoreContext);

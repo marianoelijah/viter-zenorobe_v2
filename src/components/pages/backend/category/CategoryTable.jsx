@@ -5,9 +5,9 @@ import LoadMore from "../partials/LoadMore";
 import ModalConfirm from "../partials/modals/ModalConfirm";
 import ModalDelete from "../partials/modals/ModalDelete";
 import Pills from "../partials/Pills";
-import { StoreContext } from "../store/storeContext";
-import { setIsAdd, setIsConfirm, setIsDelete } from "../store/storeAction";
 import { clothes } from "../clothes-data";
+import { StoreContext } from "@/components/store/storeContext";
+import { setIsAdd, setIsConfirm, setIsDelete } from "@/components/store/storeAction";
 
 const CategoryTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);

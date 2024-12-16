@@ -27,7 +27,7 @@ const SideNavigation = ({ menu }) => {
       icon: <ScrollText size={16} />,
     },
     {
-      title: "Advertisement",
+      title: "Banner",
       slug: "/admin/banner",
       icon: <ListCheck size={16} />,
     },

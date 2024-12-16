@@ -7,8 +7,8 @@ import { ImagePlusIcon, X } from "lucide-react";
 import React from "react";
 import ModalWrapper from "../partials/modals/ModalWrapper";
 import SpinnerButton from "../partials/spinners/SpinnerButton";
-import { StoreContext } from "../store/storeContext";
-import { setIsAdd } from "../store/storeAction";
+import { StoreContext } from "@/components/store/storeContext";
+import { setIsAdd } from "@/components/store/storeAction";
 
 const ModalAddCategory = () => {
   const { dispatch } = React.useContext(StoreContext);

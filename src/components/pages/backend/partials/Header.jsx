@@ -58,7 +58,7 @@ const Header = ({ title = "", subtitle = "" }) => {
           </span>
 
           <button className="size-[30px] rounded-full bg-accent grid place-content-center text-white">
-            ED
+            ZM
           </button>
         </div>
       </div>

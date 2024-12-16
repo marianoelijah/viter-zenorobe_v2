@@ -1,14 +1,12 @@
 import { queryData } from "@/components/helpers/queryData";
-
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 
+import { StoreContext } from "@/components/store/storeContext";
 import { FaArchive } from "react-icons/fa";
-import Spinner from "../spinners/Spinner";
-import { StoreContext } from "../../store/storeContext";
-// import { GrFormClose } from "react-icons/gr";
-// import ButtonSpinner from "../spinner/ButtonSpinner";
+import { GrFormClose } from "react-icons/gr";
+import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
+
 
 const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -53,7 +51,7 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
             <FaArchive size={30} className="" />
           </h2>
           <button onClick={handleClose}>
-            {/* <GrFormClose size={25} /> */}
+            <GrFormClose size={25} />
           </button>
         </div>
         <div className="p-4 text-center">
@@ -63,7 +61,7 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
               className="inline-block rounded-md w-full px-5 py-2 bg-[#9f1659] text-white"
               onClick={handleYes}
             >
-              {mutation.isPending ? <Spinner /> : "Yes"}
+              {mutation.isPending ? <ButtonSpinner /> : "Yes"}
             </button>
             <button
               className="inline-block rounded-md w-full px-5 py-2 bg-gray-200 text-gray-800"

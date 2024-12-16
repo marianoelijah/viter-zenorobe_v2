@@ -15,7 +15,7 @@ function checkApiKey()
     $un_pw = explode(":", base64_decode($auth_array[1]));
     $un = $un_pw[0];
 
-    if ($un !== $apiKey["fca_key"]) {
+    if ($un !== $apiKey["scc_key"]) {
         $response = new Response();
         $error = [];
         $response->setSuccess(false);

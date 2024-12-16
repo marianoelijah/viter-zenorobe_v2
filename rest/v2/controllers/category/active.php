@@ -5,7 +5,7 @@ require '../../core/header.php';
 require '../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../models/category/Category.php';
+require '../../category/Category.php';
 // get payload
 
 // check database connection
